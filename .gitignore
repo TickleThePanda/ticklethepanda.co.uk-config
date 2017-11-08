@@ -1,0 +1,5 @@
+# puppet librarian
+modules
+.tmp/
+.librarian/
+
