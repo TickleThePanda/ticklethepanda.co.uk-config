@@ -5,15 +5,11 @@ server {
 
   # Load configuration files for the default server block.
   include /etc/nginx/default.d/*.conf;
+  include /etc/nginx/includes.d/ssl-ticklethepanda.co.uk.conf;
 
   location /health {
     include /etc/nginx/cors.conf;
     proxy_pass http://localhost:3002;
-  }
-  location /location {
-    include /etc/nginx/cors.conf;
-    proxy_pass http://localhost:3003;
-    client_max_body_size 64M;
   }
   location /thermometers {
     include /etc/nginx/cors.conf;
@@ -24,7 +20,7 @@ server {
     proxy_pass http://localhost:3005/;
   }
 
-  location / {
+  location = / {
     return 302 https://github.com/ticklethepanda;
   }
 
